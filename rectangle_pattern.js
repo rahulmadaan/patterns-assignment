@@ -1,65 +1,64 @@
-let rectengleType = process.argv[2];
-let length = +process.argv[3];
-let width = +process.argv[4];
-
-const generateLine = function(length){
+const generateLine = function(length,char){
   let line = "";
   for (let charactetrOfLine = 0; charactetrOfLine < length; charactetrOfLine++){
-    line = line+"*";
+    line = line+char;
   }
   return line;
 }
-line = generateLine(length);
 
-const generateHight = function(width){
+const generateFilled = function(length,width){
+  let filledPattern=[];
   for (let indexOfLine = 0; indexOfLine < width; indexOfLine++){
-    console.log(line);
+    filledPattern[indexOfLine] = generateLine(length,"*");
   }
-  return line;
+  return filledPattern;
 }
 
-const generateMiddleLines = function(legth){
+const generateMiddleLines = function(length){
   let middleLines = "*";
   if (length > 1){
-    for (let charactetrOfLine = 1; charactetrOfLine < length-1; charactetrOfLine++ ){
-      middleLines = middleLines+" ";
+    middleLines = middleLines + generateLine(length-2," ");
     }
     middleLines = middleLines+"*";
-  }
   return middleLines;
 }
 
-const generateDelimiterLine = function(length){
-  delimiterLine = "";
-  for (let charactetrOfLine = 0; charactetrOfLine <length; charactetrOfLine++){
-    delimiterLine = delimiterLine+"-";
+const generateEmpty = function(length,width){
+  let emptyPattern = [];
+  emptyPattern[0] = generateLine(length,"*");
+  for(let index=1; index<width-1; index++){
+    emptyPattern[index] = generateMiddleLines(length);
   }
-  return delimiterLine;
-}
-delimiterLine = generateDelimiterLine(length);
-
-
-if (rectengleType == "filled"){
-  generateHight(width);
+  if(width>1){
+    emptyPattern[width-1] = emptyPattern[0];
+  }
+  return emptyPattern;
 }
 
-if (rectengleType == "empty"){
-  middleLines = generateMiddleLines(length);
-  console.log(line);
-  for (let indexOfLine = 1; indexOfLine < width-1; indexOfLine++){
-    console.log(middleLines);
-  }
-  if (width > 1){
-    console.log(line);
-  }
-}
-
-if (rectengleType == "alternative"){
-  for (let row = 1; row <= width; row++){
-    if (row%2 == 1){
-      console.log(line);
+const generateAlternative = function(length,width){
+  let alternativePattern = [];
+  for(let index=0; index<width; index++){
+    if(index%2 == 0){
+      alternativePattern[index] = generateLine(length,"*");
     } else {
-      console.log(delimiterLine);
+      alternativePattern[index] = generateLine(length,"-");
     }
   }
+  return alternativePattern;
 }
+
+const main = function(){
+  let length = +process.argv[3];
+  let width = +process.argv[4];
+  let firstPatternType = process.argv[2];
+  let secondPatternType = process.argv[5];
+
+  let patterns = {filled_rectangle: generateFilled(length,width),
+    empty_rectangle: generateEmpty(length,width),
+    alternative_rectangle: generateAlternative(length,width)}
+
+  for(let index=0; index<width; index++){
+    console.log(patterns[firstPatternType][index],patterns[secondPatternType][index]);
+  }
+}
+main();
