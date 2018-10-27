@@ -58,7 +58,7 @@ const main = function(){
     alternative_rectangle: generateAlternative(length,width)}
 
   for(let index=0; index<width; index++){
-    console.log(patterns[firstPatternType][index],patterns[secondPatternType][index]);
+    console.log(patterns[firstPatternType][index]);
   }
 }
 main();
