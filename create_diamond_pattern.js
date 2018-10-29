@@ -8,7 +8,7 @@ const generateFirstFilled = function(height){
     for (let indexOfLine = 1; indexOfLine <= (index-1)/2; indexOfLine++){
       delimiter = delimiter + " ";
     }
-    pattern = delimiter + symbol;
+    pattern = delimiter + symbol + delimiter;
     console.log(pattern);
     symbol = symbol + "**"
   }
@@ -22,7 +22,7 @@ const generateSecondFilled = function(height){
     for (let indexOfLine = 1; indexOfLine < (index-2)/2; indexOfLine++){
       symbol = symbol + "**";
     }
-    pattern = delimiter + symbol;
+    pattern = delimiter + symbol + delimiter;
     console.log(pattern)
     delimiter = delimiter + " ";
   }
@@ -41,9 +41,9 @@ const generateFirstHollow = function(height){
       delimiter = delimiter + " ";
     }
     if (indexOfLine == height){
-      pattern = delimiter + symbol;
+      pattern = delimiter + symbol + delimiter;
     } else {
-      pattern = delimiter + symbol + delimiter2 + symbol;
+      pattern = delimiter + symbol + delimiter2 + symbol + delimiter;
       delimiter2 = delimiter2 + "  ";
     }
     console.log(pattern);
@@ -61,9 +61,9 @@ const generateSecondHollow = function(height){
       delimiter2 = delimiter2 + "  ";
     }
     if (indexOfLine == 3 || indexOfLine == 4){
-      pattern = delimiter + symbol;
+      pattern = delimiter + symbol + delimiter;
     } else {
-      pattern = delimiter + symbol + delimiter2 + symbol;
+      pattern = delimiter + symbol + delimiter2 + symbol + delimiter;
       delimiter = delimiter + " ";
     }
     console.log(pattern);
@@ -87,9 +87,9 @@ const generateFirstAngled = function(height){
       delimiter = delimiter + " ";
     }
     if (indexOfLine == height){
-      pattern = delimiter + "*";
+      pattern = delimiter + "*" + delimiter;
     } else {
-      pattern = delimiter + fSlash + delimiter2 + bSlash;
+      pattern = delimiter + fSlash + delimiter2 + bSlash + delimiter;
       delimiter2 = delimiter2 + "  ";
     }
     console.log(pattern);
@@ -108,9 +108,9 @@ const generateSecondAngled = function(height){
       delimiter2 = delimiter2 + "  ";
     }
     if (indexOfLine == 3 || indexOfLine == 4){
-      pattern = delimiter + "*";
+      pattern = delimiter + "*" + delimiter;
     } else {
-      pattern = delimiter + bSlash + delimiter2 + fSlash;
+      pattern = delimiter + bSlash + delimiter2 + fSlash + delimiter;
       delimiter = delimiter + " ";
     }
     console.log(pattern);

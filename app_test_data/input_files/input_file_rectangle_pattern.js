@@ -1,4 +1,11 @@
-empty_rectangle|20|7
+filled_rectangle|20|7
+filled_rectangle|5|5
 filled_rectangle|2|2
-alternative_rectangle|10|5
-filled_rectangle|4|3
+filled_rectangle|2|3
+empty_rectangle|5|5
+empty_rectangle|20|7
+empty_rectangle|2|2
+alternative_rectangle|2|2
+alternative_rectangle|5|5
+alternative_rectangle|20|7
+alternative_rectangle|3|3
